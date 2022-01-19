@@ -1,4 +1,4 @@
-from multi2convai.main.data.label import Label
+from multi2convai.data.label import Label
 
 
 class TestLabel:
