@@ -1,6 +1,6 @@
 import pytest
 
-from multi2convai.main.data.vocab import LabelVocab, Vocab, WordVocab
+from multi2convai.data.vocab import LabelVocab, Vocab, WordVocab
 
 
 class TestVocab:
