@@ -2,7 +2,7 @@ from typing import List
 
 import pytest
 
-from multi2convai.main.preprocessing.preprocessor import (
+from multi2convai.preprocessing.preprocessor import (
     Lowercase,
     Preprocessor,
     PreprocessorStep,
