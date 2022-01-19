@@ -4,7 +4,7 @@ from typing import Dict, List
 
 
 class Vocab:
-    """Generic vocabulary mapping text to vocab indices and vice versa."
+    """Generic vocabulary mapping text to vocab indices and vice versa.
 
     Args:
         text2id (Dict[str, int]): mapping from strings to vocab indices.
