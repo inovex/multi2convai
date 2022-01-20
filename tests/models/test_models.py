@@ -1,6 +1,6 @@
 from torch.nn import Linear, Module
 
-from multi2convai.main.models.logistic_regression import LogisticRegression
+from multi2convai.models.logistic_regression import LogisticRegression
 
 
 class TestLogisticRegression:
