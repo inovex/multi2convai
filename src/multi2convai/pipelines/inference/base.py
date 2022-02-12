@@ -2,9 +2,9 @@ from abc import abstractmethod
 from enum import Enum
 from pathlib import Path
 
-from multi2convai.main.data.label import Label
-from multi2convai.main.pipelines.base import BasePipeline, BasePipelineConfig
-from multi2convai.main.pipelines.multilingual_domain_mappings import Multi2ConvAIMapping
+from multi2convai.data.label import Label
+from multi2convai.pipelines.base import BasePipeline, BasePipelineConfig
+from multi2convai.pipelines.multilingual_domain_mappings import Multi2ConvAIMapping
 
 
 class ClassificationConfig(BasePipelineConfig):

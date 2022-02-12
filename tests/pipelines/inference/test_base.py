@@ -2,12 +2,12 @@ from pathlib import Path
 
 import pytest
 
-from multi2convai.main.pipelines.base import BasePipeline, BasePipelineConfig
-from multi2convai.main.pipelines.inference.base import (
+from multi2convai.pipelines.base import BasePipeline, BasePipelineConfig
+from multi2convai.pipelines.inference.base import (
     ClassificationConfig,
     ClassificationPipeline,
 )
-from multi2convai.main.pipelines.multilingual_domain_mappings import Multi2ConvAIMapping
+from multi2convai.pipelines.multilingual_domain_mappings import Multi2ConvAIMapping
 
 
 class DummyPipeline(ClassificationPipeline):
