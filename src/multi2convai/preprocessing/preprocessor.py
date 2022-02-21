@@ -79,7 +79,7 @@ class Preprocessor:
         """Applies preprocessing to a given list of text.
 
         Args:
-            text (List[str]): list of text to be preprocessed
+            texts (List[str]): list of text to be preprocessed
 
         Returns:
             List[str]: preprocessed texts
