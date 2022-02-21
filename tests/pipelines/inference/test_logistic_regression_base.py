@@ -74,7 +74,7 @@ class TestLogisticRegressionBasePipeline:
         assert isinstance(test_result, ClassificationPipeline)
         assert test_result.config == self.config
 
-    def test_create_vectorizer_raises_error(self):
+    def test_create_vectorizer(self):
         # Given
         pipeline = DummyLogisticRegressionBasePipeline(self.config)
 
@@ -85,7 +85,7 @@ class TestLogisticRegressionBasePipeline:
         assert test_result is not None
         assert test_result == "vectorizer"
 
-    def test_create_tokenizer_raises_error(self):
+    def test_create_tokenizer(self):
         # Given
         pipeline = DummyLogisticRegressionBasePipeline(self.config)
 
