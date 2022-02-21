@@ -17,7 +17,7 @@ from multi2convai.pipelines.inference.logistic_regression_base import (
     LogisticRegressionConfig,
 )
 from multi2convai.preprocessing.preprocessor import Preprocessor
-from multi2convai.preprocessing.word_tokenizer import FasttextTokenizer
+from multi2convai.preprocessing.word_tokenizer import WordTokenizer
 
 
 class TestLogisticRegressionConfig:
@@ -137,7 +137,7 @@ class TestLogisticRegressionBasePipeline:
         pipeline.preprocessor = Preprocessor()
         pipeline.vectorizer = MagicMock()
         pipeline.vectorizer.make_vector.return_value = embedding
-        pipeline.tokenizer = FasttextTokenizer(word_vocab)
+        pipeline.tokenizer = WordTokenizer(word_vocab)
         pipeline.label_vocab = LabelVocab(self.labels)
         pipeline.model = MagicMock()
         pipeline.model.return_value = outputs
