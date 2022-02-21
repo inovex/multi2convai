@@ -5,8 +5,8 @@ from typing import Dict
 
 import numpy as np
 
-from multi2convai.main.data.vocab import WordVocab
-from multi2convai.main.preprocessing.embedding import Embedding
+from multi2convai.data.vocab import WordVocab
+from multi2convai.preprocessing.embedding import Embedding
 
 
 class DictLoader:
