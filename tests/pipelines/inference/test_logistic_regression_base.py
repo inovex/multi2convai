@@ -5,19 +5,19 @@ from unittest.mock import MagicMock, patch
 import numpy as np
 import torch
 
-from multi2convai.main.data.label import Label
-from multi2convai.main.data.vocab import LabelVocab, WordVocab
-from multi2convai.main.pipelines.base import BasePipelineConfig
-from multi2convai.main.pipelines.inference.base import (
+from multi2convai.data.label import Label
+from multi2convai.data.vocab import LabelVocab, WordVocab
+from multi2convai.pipelines.base import BasePipelineConfig
+from multi2convai.pipelines.inference.base import (
     ClassificationConfig,
     ClassificationPipeline,
 )
-from multi2convai.main.pipelines.inference.logistic_regression_base import (
+from multi2convai.pipelines.inference.logistic_regression_base import (
     LogisticRegressionBasePipeline,
     LogisticRegressionConfig,
 )
-from multi2convai.main.preprocessing.preprocessor import Preprocessor
-from multi2convai.main.preprocessing.word_tokenizer import FasttextTokenizer
+from multi2convai.preprocessing.preprocessor import Preprocessor
+from multi2convai.preprocessing.word_tokenizer import FasttextTokenizer
 
 
 class TestLogisticRegressionConfig:
@@ -96,9 +96,9 @@ class TestLogisticRegressionBasePipeline:
         assert test_result is not None
         assert test_result == "tokenizer"
 
-    @patch("multi2convai.main.pipelines.inference.logistic_regression_base.DictLoader")
+    @patch("multi2convai.pipelines.inference.logistic_regression_base.DictLoader")
     @patch(
-        "multi2convai.main.pipelines.inference.logistic_regression_base.LogisticRegression"
+        "multi2convai.pipelines.inference.logistic_regression_base.LogisticRegression"
     )
     @patch("torch.load")
     def test_setup(self, mock_load, mock_model, mock_dict_loader):
