@@ -2,8 +2,3 @@
 *
 # Except this file
 !.gitignore
-!corona
-!logistics
-!quality
-!embeddings
-!README.md
