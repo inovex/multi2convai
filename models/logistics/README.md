@@ -8,8 +8,6 @@
 | [multi2convai-logistics-en-logreg-ft](https://huggingface.co/inovex/multi2convai-logistics-en-logreg-ft) | `model.pth`, `label_dict.json` | logistic regression | fasttext |
 
 
-Our models share the following naming schema: `multi2convai-<use_case>-<language>-<model_type>-<embeddings>`
-
 ## Naming Schema
 
 Our models share the following naming schema: `multi2convai-<use_case>-<language>-<model_type>-<embeddings>`
