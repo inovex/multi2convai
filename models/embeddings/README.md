@@ -22,7 +22,7 @@ ls fasttext/en
 While downloading the fasttext embeddings you'll notice that they're quite large (some are bigger than 6 GB). To keep our pipelines quick and responsive we will serialize the embeddings and restrict the vocab to the top 200k words. You can use `serialize_fasttext.py` in our `scripts` section to do the same.
 
 ````terminal
-python serialize_fasttext.py --raw fasttext/en/wiki.en.vec --vocab fasttext/en/wiki.200k.en.vocab --embeddings fasttext/en/wiki.200k.en.embed -n 200000
+python serialize_fasttext.py --raw-path fasttext/en/wiki.en.vec --vocab-path fasttext/en/wiki.200k.en.vocab --embeddings-path fasttext/en/wiki.200k.en.embed -n 200000
 
 ls fasttext/en
 >>> wiki.200k.en.embed    wiki.200k.en.vocab    wiki.en.vec
