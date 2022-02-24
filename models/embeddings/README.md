@@ -74,10 +74,10 @@ Install git lfs if not done yet: `git lfs install` and then run:
 cd embeddings/transformers/
 git clone https://huggingface.co/bert-base-german-dbmdz-uncased
 
-ls
+ls embeddings/transformers
 >>> bert-base-german-dbmdz-uncased	README.md
 
-ls bert-base-german-dbmdz-uncased
+ls embeddings/transformers/bert-base-german-dbmdz-uncased
 >>> config.json, pytorch_model.bin, README.md, special_tokens_map.json, tokenizer_config.json, vocab.txt
 
 ````
