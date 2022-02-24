@@ -2,15 +2,13 @@
 
 ## Available models
 
-| model name | files required to run pipeline | model type | embeddings |
-|------------|--------------------------------|------------|------------|
-| [multi2convai-quality-de-logreg-ft](https://huggingface.co/inovex/multi2convai-quality-de-logreg-ft) | `model.pth`, `label_dict.json` | logistic regression | fasttext |
-| [multi2convai-quality-en-logreg-ft](https://huggingface.co/inovex/multi2convai-quality-en-logreg-ft) | `model.pth`, `label_dict.json` | logistic regression | fasttext |
-| [multi2convai-quality-fr-logreg-ft](https://huggingface.co/inovex/multi2convai-quality-fr-logreg-ft) | `model.pth`, `label_dict.json` | logistic regression | fasttext |
-| [multi2convai-quality-it-logreg-ft](https://huggingface.co/inovex/multi2convai-quality-it-logreg-ft) | `model.pth`, `label_dict.json` | logistic regression | fasttext |
+| model name | files required to run pipeline | model type | embeddings | language |
+|------------|--------------------------------|------------|------------|----------|
+| [multi2convai-quality-de-logreg-ft](https://huggingface.co/inovex/multi2convai-quality-de-logreg-ft) | `model.pth`, `label_dict.json` | logistic regression | fasttext | German (de) |
+| [multi2convai-quality-en-logreg-ft](https://huggingface.co/inovex/multi2convai-quality-en-logreg-ft) | `model.pth`, `label_dict.json` | logistic regression | fasttext | English (en) |
+| [multi2convai-quality-fr-logreg-ft](https://huggingface.co/inovex/multi2convai-quality-fr-logreg-ft) | `model.pth`, `label_dict.json` | logistic regression | fasttext | French (en) |
+| [multi2convai-quality-it-logreg-ft](https://huggingface.co/inovex/multi2convai-quality-it-logreg-ft) | `model.pth`, `label_dict.json` | logistic regression | fasttext | Italian (it) |
 
-
-Our models share the following naming schema: `multi2convai-<use_case>-<language>-<model_type>-<embeddings>`
 
 ## Naming Schema
 
