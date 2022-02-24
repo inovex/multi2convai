@@ -1,6 +1,6 @@
 # Models
 
-Models developed in the Multi2ConvAI project are available via the huggingface model hub. You can find an overview of available models here: https://huggingface.co/inovex (search for models with the prefix `multi2convai-xxx`).
+Models developed in the Multi2ConvAI project are available via the [huggingface model hub](https://huggingface.co/models). You can find an overview of available models here: https://huggingface.co/inovex (search for models with the prefix `multi2convai-xxx`).
 
 ## Naming Schema
 
@@ -45,7 +45,7 @@ In order to download `multi2convai-corona-de-logreg-ft` in python, run:
 from huggingface_hub import hf_hub_download
 import os
 
-hf_hub_download(repo_id="inovex/multi2convai-corona-de-logreg-ft", filename="label_dict.json", cache_dir="corona/multi2convai-corona-de-logreg-ft2")
+hf_hub_download(repo_id="inovex/multi2convai-corona-de-logreg-ft", filename="label_dict.json", cache_dir="corona/multi2convai-corona-de-logreg-ft")
 hf_hub_download(repo_id="inovex/multi2convai-corona-de-logreg-ft", filename="label_dict.json", cache_dir="corona/multi2convai-corona-de-logreg-ft")
 
 os.listdir("corona")
@@ -54,3 +54,7 @@ os.listdir("corona")
 os.listdir("corona/multi2convai-corona-de-logreg-ft")
 >>> ['<hash1>.<hash2>.lock', '<hash1>.<hash2>', '<hash1>.<hash2>.json']
 ````
+
+## Download Embeddings
+
+Some of our models our models require pretrained embeddings. Further details can be found in `embeddings/README.md`.
