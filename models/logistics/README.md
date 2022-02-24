@@ -2,10 +2,10 @@
 
 ## Available models
 
-| model name | files required to run pipeline | model type | embeddings |
-|------------|--------------------------------|------------|------------|
-| [multi2convai-logistics-de-logreg-ft](https://huggingface.co/inovex/multi2convai-logistics-de-logreg-ft) | `model.pth`, `label_dict.json` | logistic regression | fasttext |
-| [multi2convai-logistics-en-logreg-ft](https://huggingface.co/inovex/multi2convai-logistics-en-logreg-ft) | `model.pth`, `label_dict.json` | logistic regression | fasttext |
+| model name | files required to run pipeline | model type | embeddings | language |
+|------------|--------------------------------|------------|------------|----------|
+| [multi2convai-logistics-de-logreg-ft](https://huggingface.co/inovex/multi2convai-logistics-de-logreg-ft) | `model.pth`, `label_dict.json` | logistic regression | fasttext | German (de) |
+| [multi2convai-logistics-en-logreg-ft](https://huggingface.co/inovex/multi2convai-logistics-en-logreg-ft) | `model.pth`, `label_dict.json` | logistic regression | fasttext | English (en) |
 
 
 ## Naming Schema

@@ -1,6 +1,6 @@
 # Embeddings
 
-Some of our models our models require pretrained embeddings. This page explains how to download them.
+Some of our models our models require pretrained embeddings. This page explains how to download them. Take a look into the readme of our models or in the use case readmes ([corona](../corona/README.md), [logistics](../logistics/README.md), [quality](../quality/README.md)) to know on which pretrained embeddings they rely.
 
 For details how to download our multi2convai models check out this [README](../README.md/#download-models).
 
