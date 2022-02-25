@@ -41,6 +41,7 @@ _logger = logging.getLogger(__name__)
     "top_n",
     required=False,
     type=int,
+    default=-1,
     help="Number of vocabulary words to serialize (default is whole vocabulary)",
 )
 @click.option("--quiet", "log_level", flag_value=logging.WARNING, default=True)
