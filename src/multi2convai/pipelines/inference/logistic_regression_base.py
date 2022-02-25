@@ -72,7 +72,7 @@ class LogisticRegressionBasePipeline(ClassificationPipeline):
 
             ratio, predicted = torch.max(outputs.data, 1)
             label = Label(self.label_vocab.id2text(predicted.item()), ratio.item())
-            logging.info(
+            logging.debug(
                 "Predict Label: {}, Ratio: {}".format(label.string, label.ratio)
             )
 
