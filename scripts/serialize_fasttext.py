@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 import logging
 import pickle
 import sys
@@ -5,6 +6,8 @@ from typing import Dict, Tuple
 
 import click
 import numpy as np
+
+_logger = logging.getLogger(__name__)
 
 
 @click.command()
@@ -40,7 +43,9 @@ import numpy as np
     type=int,
     help="Number of vocabulary words to serialize (default is whole vocabulary)",
 )
-@click.option("--quiet", "log_level", flag_value=logging.INFO, default=True)
+@click.option("--quiet", "log_level", flag_value=logging.WARNING, default=True)
+@click.option("-v", "--verbose", "log_level", flag_value=logging.INFO)
+@click.option("-vv", "--very-verbose", "log_level", flag_value=logging.DEBUG)
 def main(raw_path: str, vocab_path: str, embeddings_path: str, top_n: int, log_level):
     logging.basicConfig(
         stream=sys.stdout,
