@@ -46,13 +46,13 @@ from huggingface_hub import hf_hub_download
 import os
 
 hf_hub_download(repo_id="inovex/multi2convai-corona-de-logreg-ft", filename="label_dict.json", cache_dir="corona/multi2convai-corona-de-logreg-ft")
-hf_hub_download(repo_id="inovex/multi2convai-corona-de-logreg-ft", filename="label_dict.json", cache_dir="corona/multi2convai-corona-de-logreg-ft")
+hf_hub_download(repo_id="inovex/multi2convai-corona-de-logreg-ft", filename="model.pth", cache_dir="corona/multi2convai-corona-de-logreg-ft")
 
 os.listdir("corona")
 >>> ["multi2convai-corona-de-logreg-ft", "README.md"]
 
 os.listdir("corona/multi2convai-corona-de-logreg-ft")
->>> ['<hash1>.<hash2>.lock', '<hash1>.<hash2>', '<hash1>.<hash2>.json']
+>>> ["<hash1>.<hash2>.lock", "<hash1>.<hash2>", "<hash1>.<hash2>.json", "<hash1>.<hash2>.pth"]
 ````
 
 ## Download Embeddings

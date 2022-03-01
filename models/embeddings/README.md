@@ -70,7 +70,7 @@ Please refer to the huggingface hub documentation in case you face problems: htt
 
 Install git lfs if not done yet: `git lfs install` and then run:
 
-````terminal
+````bash
 cd embeddings/transformers/
 git clone https://huggingface.co/bert-base-german-dbmdz-uncased
 

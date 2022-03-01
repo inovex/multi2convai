@@ -13,13 +13,43 @@
 
 > Bring cutting-edge representation and transfer learning models to conversational AI systems
 
-A longer description of your project goes here...
+## About Multi2ConvAI
+
+This python package was developed in the [Multi2ConvAI-project](https://multi2conv.ai). Goal of Multi2ConvAI was to examine methods for transferring conversational AI models across domains and languages, even with a limited number of dialogues or, in extreme cases, no dialogues at all of the target domain or target language. Within this package we share components to run the intent-classification models that have been developed over the course of the project.
+
+Multi2Convai was a collaboration between the [NLP group of the University of Mannheim](https://www.uni-mannheim.de/dws/research/focus-groups/natural-language-processing-and-information-retrieval-prof-ponzetto/), [Neohelden](https://neohelden.com/) and [inovex](https://www.inovex.de/en/). The project was part of the "KI-Innovationswettbewerb" (an AI innovation challenge) funded by the state of Baden Württemberg.
+
+### Use Cases
+
+We developed a set of models for several use cases over the course of the project. Our use cases are intent-classification tasks in different domains and languages. The following table gives you an overview about the domains and langauges that have been covered in the project:
+
+|Corona       |Logistics     |Quality     |
+|-------------|--------------|------------|
+|German (de)  |German (de)   |German (de) |
+| English (en)|English (en)  |English (en)|
+| French (fr) |Croatian (hr) |French (fr) |
+| Italian (it)|Polish (pl)   |Italian (it)|
+|             |Turkish (tr)  |            |
+
+
+Please check this blogpost for more details about the use cases: [en](https://multi2conv.ai/en/blog/use-cases), [de](https://multi2conv.ai/de/blog/use-cases)
+
+### Models
+
+All our models are available on the huggingface model hub: https://huggingface.co/inovex. Search for models following the pattern `multi2convai-xxx`. Our models can be subdivided into three categories:
+
+- logistic regression using static fasttext word embeddings
+   - schema: `multi2convai-<domain>-<language>-logreg-ft`
+- logistic regression using contextual word embeddings
+   - schema: `multi2convai-<domain>-<language>-logreg-<embedding, e.g. bert or xlmr>`
+- finetuned transformers
+   - schema: `multi2convai-<domain>-<language>-<transformer name, e.g. bert>`
+
 
 ## Installation
 
 In order to set up the necessary environment:
-
-1. review and uncomment what you need in `environment.yml` and create an environment `multi2convai` with the help of [conda]:
+1. Create an environment `multi2convai` with the help of [conda]:
    ```
    conda env create -f environment.yml
    ```
@@ -49,52 +79,119 @@ Optional and needed only once after `git clone`:
    This is useful to avoid large diffs due to plots in your notebooks.
    A simple `nbstripout --uninstall` will revert these changes.
 
+## Download models
 
-Then take a look into the `scripts` and `notebooks` folders.
+Before running our models you'll need to download the required files. Which files you need depends on the model type:
 
-## Dependency Management & Reproducibility
+- Download model repo from hugginface (all model types)
+- Download and serialize fasttext embeddings (only `xxx-logreg-ft` models)
+- Download pretrained language models (only `xxx-logreg-<transformer, e.g. bert or xlmr>`)
 
-1. Always keep your abstract (unpinned) dependencies updated in `environment.yml` and eventually
-   in `setup.cfg` if you want to ship and install your package via `pip` later on.
-2. Create concrete dependencies as `environment.lock.yml` for the exact reproduction of your
-   environment with:
-   ```bash
-   conda env export -n multi2convai -f environment.lock.yml
-   ```
-   For multi-OS development, consider using `--no-builds` during the export.
-3. Update your current environment with respect to a new `environment.lock.yml` using:
-   ```bash
-   conda env update -f environment.lock.yml --prune
-   ```
+### Download model repo from huggingface
+````terminal
+# requires git-lfs installed
+# see models/README.md for more details
+
+cd models/corona
+
+git clone https://huggingface.co/inovex/multi2convai-corona-de-logreg-ft
+
+ls corona/multi2convai-corona-de-logreg-ft
+>>> README.md    label_dict.json   model.pth
+````
+
+### Download and serialize fasttext
+
+> Only required for `multi2convai-<domain>-<language>-logreg-ft` models
+
+````terminal
+# see models/embeddings/README.md for more details
+
+# 1. Download fasttext embeddings
+mkdir models/embeddings/fasttext/en
+curl https://dl.fbaipublicfiles.com/fasttext/vectors-wiki/wiki.de.vec --output fasttext/de/wiki.de.vec
+
+ls models/embeddings/fasttext/en
+>>> wiki.en.vec
+
+# 2. Serialize fasttext embeddings
+python serialize_fasttext.py --raw-path fasttext/en/wiki.en.vec --vocab-path fasttext/en/wiki.200k.en.vocab --embeddings-path fasttext/en/wiki.200k.en.embed -n 200000
+
+ls fasttext/en
+>>> wiki.200k.en.embed    wiki.200k.en.vocab    wiki.en.vec
+````
+
+### Download pretrained language models
+
+> Only required for `multi2convai-<domain>-<language>-logreg-<transformer, e.g. bert or xlmr>` models
+
+````python
+# see models/embeddings/README.md for more details
+
+from transformers import AutoTokenizer, AutoModelForMaskedLM
+import os
+
+tokenizer = AutoTokenizer.from_pretrained("bert-base-german-dbmdz-uncased")
+model = AutoModelForMaskedLM.from_pretrained("bert-base-german-dbmdz-uncased")
+
+tokenizer.save_pretrained("models/embeddings/transformers/bert-base-german-dbmdz-uncased")
+model.save_pretrained("models/embeddings/transformers/bert-base-german-dbmdz-uncased")
+
+os.listdir("transformers/bert-base-german-dbmdz-uncased")
+>>> ["config.json", "pytorch_model.bin", "special_tokens_map.json", "tokenizer_config.json", "vocab.txt"]
+````
+
+## Run models
+
+### Run with one line of code
+````terminal
+python scripts/run_inference.py -m multi2convai-corona-de-logreg-ft
+````
+
+### Run with huggingface Transformers
+
+> Only works for `multi2convai-<domain>-<language>-<transformer, e.g. bert)` models (no `logreg` in name)
+
+````python
+from transformers import AutoTokenizer, AutoModelForSequenceClassification
+
+# Loads from locally available files
+tokenizer = AutoTokenizer.from_pretrained("models/logistics/multi2convai-logistics-en-bert")
+model = AutoModelForSequenceClassification.from_pretrained("models/logistics/multi2convai-logistics-en-bert")
+
+# Alternative: Loads directly from huggingface model hub
+# tokenizer = AutoTokenizer.from_pretrained("inovex/multi2convai-logistics-en-bert")
+# model = AutoModelForSequenceClassification.from_pretrained("inovex/multi2convai-logistics-en-bert")
+
+````
+
+## Next steps
+
+We're still migrating our codebase to this github repo. The following steps are completed:
+
+- [x] Upload all models to huggingface model hub (https://huggingface.co/inovex)
+- [x] Migrate functionality to load and run logistic regression models with fasttext embeddings with `multi2convai`
+- [ ] Migrate functionality to load and run logistic regression models with contextual embeddings with `multi2convai`
+- [ ] Migrate functionality to load and run transformers with `multi2convai`
+- [ ] Publish documentation
+
+
 ## Project Organization
 
 ```
 ├── AUTHORS.md              <- List of developers and maintainers.
 ├── CHANGELOG.md            <- Changelog to keep track of new features and fixes.
 ├── CONTRIBUTING.md         <- Guidelines for contributing to this project.
-├── Dockerfile              <- Build a docker container with `docker build .`.
 ├── LICENSE.txt             <- License as chosen on the command-line.
 ├── README.md               <- The top-level README for developers.
-├── configs                 <- Directory for configurations of model & application.
-├── data
-│   ├── external            <- Data from third party sources.
-│   ├── interim             <- Intermediate data that has been transformed.
-│   ├── processed           <- The final, canonical data sets for modeling.
-│   └── raw                 <- The original, immutable data dump.
 ├── docs                    <- Directory for Sphinx documentation in rst or md.
 ├── environment.yml         <- The conda environment file for reproducibility.
-├── models                  <- Trained and serialized models, model predictions,
-│                              or model summaries.
-├── notebooks               <- Jupyter notebooks. Naming convention is a number (for
-│                              ordering), the creator's initials and a description,
-│                              e.g. `1.0-fw-initial-data-exploration`.
+├── models                  <- Directory to which you can download models shared
+│                              on the huggingface model hub.
+├── notebooks               <- Jupyter notebooks.
 ├── pyproject.toml          <- Build configuration. Don't change! Use `pip install -e .`
 │                              to install for development or to build `tox -e build`.
-├── references              <- Data dictionaries, manuals, and all other materials.
-├── reports                 <- Generated analysis as HTML, PDF, LaTeX, etc.
-│   └── figures             <- Generated plots and figures for reports.
-├── scripts                 <- Analysis and production scripts which import the
-│                              actual PYTHON_PKG, e.g. train_model.
+├── scripts                 <- Scripts to e.g. serialize fasttext embeddings or run models.
 ├── setup.cfg               <- Declarative configuration of your project.
 ├── setup.py                <- [DEPRECATED] Use `python setup.py develop` to install for
 │                              development or `python setup.py bdist_wheel` to build.
