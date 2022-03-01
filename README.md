@@ -23,21 +23,14 @@ Multi2Convai was a collaboration between the [NLP group of the University of Man
 
 We developed a set of models for several use cases over the course of the project. Our use cases are intent-classification tasks in different domains and languages. The following table gives you an overview about the domains and langauges that have been covered in the project:
 
-|domain|languages|
-|------|---------|
-|Corona|German (de)|
-| | English (en)|
-| | French (fr) |
-| | Italian (it)|
-|Logistics|German (de)|
-| | English (en)|
-| | Croatian (hr) |
-| | Polish (pl)|
-| | Turkish (tr)|
-|Quality|German (de)|
-| | English (en)|
-| | French (fr) |
-| | Italian (it)|
+|domain   |Corona       |Logistics     |Quality     |
+|---------|-------------|--------------|------------|
+|languages|German (de)  |German (de)   |German (de) |
+|         | English (en)|English (en)  |English (en)|
+|         | French (fr) |Croatian (hr) |French (fr) |
+|         | Italian (it)|Polish (pl)   |Italian (it)|
+|         |             |Turkish (tr)  |            |
+
 
 Please check this blogpost for more details about the use cases: [en](https://multi2conv.ai/en/blog/use-cases), [de](https://multi2conv.ai/de/blog/use-cases)
 
@@ -92,7 +85,7 @@ Before running our models you'll need to download the required files. Which file
 - Download pretrained language models (only `xxx-logreg-<transformer, e.g. bert or xlmr>`)
 
 ### Download model repo from huggingface (all model types)
-````bash
+````terminal
 # requires git-lfs installed
 # see models/README.md for more details
 
@@ -106,7 +99,7 @@ ls corona/multi2convai-corona-de-logreg-ft
 
 ### Download and serialize fasttext (only `xxx-logreg-ft` models)
 
-````bash
+````terminal
 # see models/embeddings/README.md for more details
 
 # 1. Download fasttext embeddings
@@ -144,7 +137,7 @@ os.listdir("transformers/bert-base-german-dbmdz-uncased")
 ### Run inference
 
 #### Run with one line of code
-````bash
+````terminal
 python scripts/run_inference.py -m multi2convai-corona-de-logreg-ft
 ````
 
