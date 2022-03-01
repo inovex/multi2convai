@@ -23,13 +23,13 @@ Multi2Convai was a collaboration between the [NLP group of the University of Man
 
 We developed a set of models for several use cases over the course of the project. Our use cases are intent-classification tasks in different domains and languages. The following table gives you an overview about the domains and langauges that have been covered in the project:
 
-|domain   |Corona       |Logistics     |Quality     |
-|---------|-------------|--------------|------------|
-|languages|German (de)  |German (de)   |German (de) |
-|         | English (en)|English (en)  |English (en)|
-|         | French (fr) |Croatian (hr) |French (fr) |
-|         | Italian (it)|Polish (pl)   |Italian (it)|
-|         |             |Turkish (tr)  |            |
+|Corona       |Logistics     |Quality     |
+|-------------|--------------|------------|
+|German (de)  |German (de)   |German (de) |
+| English (en)|English (en)  |English (en)|
+| French (fr) |Croatian (hr) |French (fr) |
+| Italian (it)|Polish (pl)   |Italian (it)|
+|             |Turkish (tr)  |            |
 
 
 Please check this blogpost for more details about the use cases: [en](https://multi2conv.ai/en/blog/use-cases), [de](https://multi2conv.ai/de/blog/use-cases)
