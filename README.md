@@ -79,7 +79,7 @@ Optional and needed only once after `git clone`:
    This is useful to avoid large diffs due to plots in your notebooks.
    A simple `nbstripout --uninstall` will revert these changes.
 
-## How to use
+## Download models
 
 Before running our models you'll need to download the required files. Which files you need depends on the model type:
 
@@ -87,7 +87,7 @@ Before running our models you'll need to download the required files. Which file
 - Download and serialize fasttext embeddings (only `xxx-logreg-ft` models)
 - Download pretrained language models (only `xxx-logreg-<transformer, e.g. bert or xlmr>`)
 
-### Download model repo from huggingface (all model types)
+### Download model repo from huggingface
 ````terminal
 # requires git-lfs installed
 # see models/README.md for more details
@@ -100,7 +100,9 @@ ls corona/multi2convai-corona-de-logreg-ft
 >>> README.md    label_dict.json   model.pth
 ````
 
-### Download and serialize fasttext (only `xxx-logreg-ft` models)
+### Download and serialize fasttext
+
+> Only required for `multi2convai-<domain>-<language>-logreg-ft` models
 
 ````terminal
 # see models/embeddings/README.md for more details
@@ -119,7 +121,9 @@ ls fasttext/en
 >>> wiki.200k.en.embed    wiki.200k.en.vocab    wiki.en.vec
 ````
 
-### Download pretrained language models (only `xxx-logreg-<transformer, e.g. bert or xlmr>`)
+### Download pretrained language models
+
+> Only required for `multi2convai-<domain>-<language>-logreg-<transformer, e.g. bert or xlmr>` models
 
 ````python
 # see models/embeddings/README.md for more details
@@ -137,14 +141,16 @@ os.listdir("transformers/bert-base-german-dbmdz-uncased")
 >>> ["config.json", "pytorch_model.bin", "special_tokens_map.json", "tokenizer_config.json", "vocab.txt"]
 ````
 
-### Run inference
+## Run models
 
-#### Run with one line of code
+### Run with one line of code
 ````terminal
 python scripts/run_inference.py -m multi2convai-corona-de-logreg-ft
 ````
 
-#### Run with huggingface Transformers (only finetuned language models)
+### Run with huggingface Transformers
+
+> Only works for `multi2convai-<domain>-<language>-<transformer, e.g. bert)` models (no `logreg` in name)
 
 ````python
 from transformers import AutoTokenizer, AutoModelForSequenceClassification
@@ -158,6 +164,17 @@ model = AutoModelForSequenceClassification.from_pretrained("models/logistics/mul
 # model = AutoModelForSequenceClassification.from_pretrained("inovex/multi2convai-logistics-en-bert")
 
 ````
+
+## Next steps
+
+We're still migrating our codebase to this github repo. The following steps are completed:
+
+- [x] Upload all models to huggingface model hub (https://huggingface.co/inovex)
+- [x] Migrate functionality to load and run logistic regression models with fasttext embeddings with `multi2convai`
+- [ ] Migrate functionality to load and run logistic regression models with contextual embeddings with `multi2convai`
+- [ ] Migrate functionality to load and run transformers with `multi2convai`
+- [ ] Publish documentation
+
 
 ## Project Organization
 
