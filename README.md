@@ -38,9 +38,12 @@ Please check this blogpost for more details about the use cases: [en](https://mu
 
 All our models are available on the huggingface model hub: https://huggingface.co/inovex. Search for models following the pattern `multi2convai-xxx`. Our models can be subdivided into three categories:
 
-- logistic regression using static fasttext word embeddings (schema: `multi2convai-<domain>-<language>-logreg-ft`)
-- logistic regression using contextual word embeddings (schema: `multi2convai-<domain>-<language>-logreg-<embedding, e.g. bert or xlmr>`)
-- finetuned transformers (schema: `multi2convai-<domain>-<language>-<transformer name, e.g. bert>`)
+- logistic regression using static fasttext word embeddings
+   - schema: `multi2convai-<domain>-<language>-logreg-ft`
+- logistic regression using contextual word embeddings
+   - schema: `multi2convai-<domain>-<language>-logreg-<embedding, e.g. bert or xlmr>`
+- finetuned transformers
+   - schema: `multi2convai-<domain>-<language>-<transformer name, e.g. bert>`
 
 
 ## Installation
