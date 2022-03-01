@@ -10,7 +10,7 @@ Check out https://fasttext.cc/ to learn about the background of fastText embeddi
 
 In order to download embeddings from fastText (e.g. for English), [do it via their fasttext python package](https://fasttext.cc/docs/en/crawl-vectors.html) or execute the following commands yourself:
 
-````terminal
+````bash
 mkdir fasttext/en
 curl https://dl.fbaipublicfiles.com/fasttext/vectors-wiki/wiki.en.vec --output fasttext/en/wiki.en.vec
 
@@ -21,7 +21,7 @@ ls fasttext/en
 
 While downloading the fasttext embeddings you'll notice that they're quite large (some are bigger than 6 GB). To keep our pipelines quick and responsive we will serialize the embeddings and restrict the vocab to the top 200k words. You can use `serialize_fasttext.py` in our `scripts` section to do the same.
 
-````terminal
+````bash
 python serialize_fasttext.py --raw-path fasttext/en/wiki.en.vec --vocab-path fasttext/en/wiki.200k.en.vocab --embeddings-path fasttext/en/wiki.200k.en.embed -n 200000
 
 ls fasttext/en
@@ -70,7 +70,7 @@ Please refer to the huggingface hub documentation in case you face problems: htt
 
 Install git lfs if not done yet: `git lfs install` and then run:
 
-````terminal
+````bash
 cd embeddings/transformers/
 git clone https://huggingface.co/bert-base-german-dbmdz-uncased
 
