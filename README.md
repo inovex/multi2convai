@@ -19,6 +19,8 @@ This python package was developed in the [Multi2ConvAI-project](https://multi2co
 
 Multi2Convai was a collaboration between the [NLP group of the University of Mannheim](https://www.uni-mannheim.de/dws/research/focus-groups/natural-language-processing-and-information-retrieval-prof-ponzetto/), [Neohelden](https://neohelden.com/) and [inovex](https://www.inovex.de/en/). The project was part of the "KI-Innovationswettbewerb" (an AI innovation challenge) funded by the state of Baden Württemberg.
 
+Contact: [info@multi2conv.ai](mailto:info@multi2conv.ai).
+
 ### Use Cases
 
 We developed a set of models for several use cases over the course of the project. Our use cases are intent-classification tasks in different domains and languages. The following table gives you an overview about the domains and langauges that have been covered in the project:
